@@ -23,6 +23,31 @@ router.get('/:id', (req, res) => {
    
 });
 
+//Obtener users por name
+router.get('/:name', (req, res) => {
+    const found = users.some( user => user.name === parseInt(req.params.name) ) 
+
+    if(found) {
+        res.json(users.filter(user => user.name === parseInt(req.params.name)))
+    } else {
+        res.sendStatus(400);
+    }
+   
+});
+
+//Obtener users por lastname
+router.get('/:lastname', (req, res) => {
+    const found = users.some( user => user.lastname === parseInt(req.params.lastname) ) 
+
+    if(found) {
+        res.json(users.filter(user => user.lastname === parseInt(req.params.lastname)))
+    } else {
+        res.sendStatus(400);
+    }
+   
+});
+
+
 //Crear new user
 router.post('/', (req, res) => {
     const newUser = {
